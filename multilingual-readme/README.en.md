@@ -2,135 +2,91 @@
 
 [简体中文](README.zh-CN.md) | **English** | [Deutsch](README.de.md) | [日本語](README.ja.md) | [Français](README.fr.md)
 
-UCE Tool is the desktop companion for USB-C Explorer. It displays live measurements, reads E-Marker data, detects charging protocols, updates device firmware, and configures device theme colors.
+UCE Tool is the desktop companion for USB-C Explorer. It provides live measurements, E-Marker reading, PD detection and capture, device theme configuration, and firmware updates.
 
-It supports Windows 64-bit, Apple Silicon and Intel Macs, with Chinese, English, German, Japanese and French interfaces.
+## Install and connect
 
-**[Download the latest release](https://github.com/Tamako-zz/UCE-Tool/releases/latest)** · **[All releases](https://github.com/Tamako-zz/UCE-Tool/releases)**
+Download the appropriate Windows or macOS package from the [releases page](https://github.com/Tamako-zz/UCE-Tool/releases/latest). Extract the Windows package and open the application, or install the Mac app in Applications.
 
-## Contents
+Connect the device to the computer with a data-capable USB cable. The device appears in the left sidebar; click its card to connect. Click the connected card again to disconnect, or click another device card to switch devices. Scanning does not automatically connect a device.
 
-- [Download and installation](#download)
-- [Connect your device](#connect)
-- [Dashboard and live chart](#dashboard)
-- [E-Marker and records](#emarker)
-- [Charging protocols and PDOs](#protocol)
-- [Device firmware update](#firmware)
-- [Device theme colors](#theme)
-- [Language, appearance and device information](#settings)
-- [Update UCE Tool](#software-update)
-- [Troubleshooting](#faq)
+## Dashboard
 
-<a id="download"></a>
-## Download and installation
+Open **Dashboard** and press the start icon to display live measurements and charts. Use the channel controls to select curves, adjust the sampling rate and time range, pause, or clear the chart.
 
-On the [Releases page](https://github.com/Tamako-zz/UCE-Tool/releases/latest), expand **Assets** and choose the file for your computer:
+## E-Marker
 
-| File | Platform | Application |
-| --- | --- | --- |
-| `UCE-Windows-x64.zip` | Windows 64-bit, Intel / AMD | `UCE.exe` |
-| `UCE-mac-arm64.dmg` | Mac, Apple Silicon (M series) | `UCE.app` |
-| `UCE-mac-x86_64.dmg` | Mac, Intel | `UCE.app` |
+Connect the cable to the device as indicated by its ports and open **E-Marker**. Click **Read** to view the reported cable information, or **Continuous Read** to repeat the query; click it again to stop. Remove powered devices from the output before starting continuous reading, as prompted by the application.
 
-On a Mac, check **Apple menu → About This Mac** to identify the processor.
+Open **Detection Records** to view results from this session. Export them to Excel or clear the list. Fields not reported or not recognized are shown as unknown.
 
-**Windows:** Download the ZIP, extract it completely, and open `UCE.exe` from the extracted folder.
+## PD Detection
 
-**macOS:** Open the matching DMG, drag `UCE.app` to **Applications**, eject the disk image, and open UCE from Applications. If macOS blocks the first launch, verify the source and allow it under **System Settings → Privacy & Security**.
+Connect the charger to be tested and open **PD Detection**. Click **Start Detection**, read the warning and confirm. The page shows the detected PDOs and their individual results; the same button can stop an active detection. Records can be viewed, exported to Excel, or cleared.
 
-<a id="connect"></a>
-## Connect your device
+**Voltage may rise during detection. Disconnect powered devices from the output before starting.**
 
-You need a USB-C Explorer, a data-capable USB cable, and APP firmware compatible with your hardware. Theme and protocol features also require compatible firmware.
+## PD Analyzer
 
-1. Start UCE Tool and connect the device through its data interface.
-2. The application scans for devices and attempts to connect automatically. Confirm **Connected** on the left.
-3. Open the desired page. The device card shows the name, abbreviated serial number and APP version; the full serial number is in Settings.
+Connect the test circuit according to the device port markings. Open **PD Analyzer** and click **Start Capture**; click the same button to stop. Select a packet to inspect its header and data objects below the list. Drag the divider to resize the areas.
 
-Click a device card to switch between connected devices. Wait until an upgrade finishes before switching. A device in **BOOT mode** can be recovered using firmware update; live measurements require running APP firmware.
+Use the GoodCRC switch to hide or show GoodCRC packets. **Export Excel** saves the capture, including hidden GoodCRC packets.
 
-<a id="dashboard"></a>
-## Dashboard and live chart
+## Theme Configuration
 
-Connect the device, open **Dashboard**, and click the start icon. The values and chart update as samples arrive.
+Use the arrows to choose a device screen, then click a color region or the background color to edit it.
 
-| Channel | Meaning |
-| --- | --- |
-| VBUS / IBUS / POWER | Voltage (V), current (A), and power (W) |
-| D+ / D− | USB data-line voltages |
-| CC1 / CC2 | USB-C CC pin voltages |
+- **Restore Defaults** restores the default colors.
+- **Read from Device** loads the current colors.
+- **Apply to Device** applies colors temporarily.
+- **Save to Device** saves them across restarts.
 
-Click channel labels to show or hide curves. Voltage, current and power have separate scales. Hover over the chart to inspect samples; `--` indicates no sample at that position.
+## Firmware update and settings
 
-Sampling rates are **1, 10, or 50 SPS**; the displayed time window is **10, 30, 60, or 120 seconds**. The stop control pauses acquisition; starting again resumes it without counting the paused time. Clear removes chart history and resets its elapsed time; if paused, start again to resume.
+Open **Firmware Update**, fetch the available versions, and choose the firmware matching your device. Follow the on-screen instructions and keep the device connected and powered until the update finishes.
 
-<a id="emarker"></a>
-## E-Marker and records
+Use Settings to change the language and view device information; use the sidebar control to switch between light and dark modes. Records are kept for the current session, so export anything you need before closing the application. If the device is busy, stop any other detection or capture first.
 
-Connect the cable to the indicated device port, open **E-Marker**, and click **Read** or **Continuous Read**. Before continuous detection, ensure no other powered devices are connected to the device output. Use the same button to stop continuous detection.
+## More detailed guidance
 
-The cable page can show cable type, current, maximum voltage, USB speed, PD revision, TBT, EPR and length/latency when reported. Unreported or unrecognized fields show **Unknown**. Check the cable and connection if no E-Marker is detected. Raw VDO data appears below the illustration.
+### Starting the application
 
-Successful readings are added to the current session's **Detection Records**. Export creates an `.xlsx` file with timestamps, cable information and raw VDOs. Times use UTC+8. Records are cleared when the application exits, so export anything you need to keep.
+The Windows and macOS application packages are intended for normal use and do not require a separate Python installation. On Mac, select the package for Apple Silicon or Intel as appropriate. If macOS blocks the first launch, check that the application came from the project, then allow it in **System Settings → Privacy & Security**.
 
-<a id="protocol"></a>
-## Charging protocols and PDOs
+Use the device's data interface to connect it to the computer; a charging-only cable may supply power without making the device available to the software. The sidebar shows the device name, abbreviated serial number, and APP version. The full serial number is available in device information. A device in BOOT mode can be used for firmware recovery, but live measurements and detection require the application firmware.
 
-Connect the charger or power source to the designated port, open **PD Detection**, and start detection. Voltage can rise during detection: disconnect any powered loads from the device output first. The same control can stop detection.
+### Reading the dashboard
 
-The page displays reported PDO voltage, current and power, together with individual passed, failed, pending or unsupported states. Available tests depend on device firmware. If the device is busy, stop the current detection before another operation.
+VBUS is voltage, IBUS is current, and POWER is power. D+ / D− and CC1 / CC2 show the corresponding signal voltages. The chart has separate scales for voltage, current, and power, so check the unit when comparing curves. Move the pointer over the chart to inspect samples; `--` means no value is available at that position.
 
-<a id="firmware"></a>
-## Device firmware update
+You can choose a sampling rate of 1, 10, or 50 samples per second and a displayed time range of 10, 30, 60, or 120 seconds. Pausing holds the display; resuming continues acquisition. Clearing removes the displayed history.
 
-This page updates firmware **on the USB-C Explorer device**.
+### E-Marker and PD results
 
-1. Connect the device and open **Firmware Update**.
-2. Click **Fetch releases** to load the version list.
-3. Read the release notes and choose a version compatible with your hardware. If a version has multiple BIN files, choose the correct one according to its notes.
-4. Click **Update** on that version. The selected firmware is downloaded, checked, and then sent to the device. The card shows progress and the result.
+E-Marker information depends on what the cable and firmware report. The page can show cable type, current rating, maximum voltage, data speed, PD version, TBT, EPR, and length or latency. An estimated length is derived from cable latency and is not a physical measurement. Raw E-Marker data is shown below the cable information.
 
-Only the selected firmware is downloaded; its temporary file is cleaned up after the operation. Keep USB connected and do not switch devices during the upgrade. After completion, refresh device information in Settings to check the APP version. If an upgrade fails, retain the error, check the connection and firmware compatibility, and retry.
+PD Detection reads the charger's advertised PDOs and, when the firmware supplies them, displays individual test states. A capability being advertised does not by itself mean that its test passed. The result and record views can be switched with the tabs above the results. If a required feature is not supported, update to compatible device firmware.
 
-<a id="theme"></a>
-## Device theme colors
+The E-Marker and PD Detection record lists are session histories. **Clear Records** removes the current list; **Export Excel** creates an `.xlsx` file. Choose a location before closing the application if you want to keep the results.
 
-Open **Theme Configuration**. Use the arrows to switch preview pages, click editable color blocks, and use the background selector beneath the preview. **Apply to device** previews the colors; **Save to device** keeps them after a restart.
+### Reading a PD capture
 
-The preview covers measurements, statistics, E-Marker, protocol detection and device settings. Statistics color blocks represent the title, MAX, CUR, Ah and Wh areas. New configurable areas require device firmware support.
+The capture table shows packet type, SOP channel, message ID, direction, object count, PD revision, elapsed time, voltage/current snapshot, raw data and notes. Select a row to see a breakdown of the message header and available data-object fields. The detail area can scroll horizontally and vertically when a packet contains many fields.
 
-| Action | Effect |
-| --- | --- |
-| Restore defaults | Reset preview colors to defaults |
-| Read from device | Replace the current preview with device colors |
-| Apply to device | Preview on the device without permanent storage |
-| Save to device | Apply and save colors across restarts |
+Attach and Detach are connection events; Hard Reset is a reset event on the monitored PD link. The analyzer may show raw values when it cannot safely determine a field's meaning. Cable-message direction is displayed as communication between the port and plug when the exact sender is not known.
 
-Hover over the buttons for descriptions. If an area does not change on the device, check that its firmware supports that area.
+GoodCRC filtering affects the display, not the stored capture: hidden entries are included in the Excel export.
 
-<a id="settings"></a>
-## Language, appearance and device information
+### Applying colors and updating firmware
 
-Choose **简体中文, English, Deutsch, 日本語, or Français** under **Interface Language**. The choice is saved. It affects the desktop application, not the device display. Firmware notes use translations supplied by the publisher; raw device data remains unchanged.
+Theme colors are edited in the preview first. **Apply to Device** lets you inspect a temporary change; use **Save to Device** after confirming the result if it should remain after power cycling. **Read from Device** replaces the preview with the device's current colors, while **Restore Defaults** restores the default values in the editor.
 
-Use the sidebar controls to switch light/dark appearance and collapse or expand navigation. Desktop appearance and device theme colors are configured separately. Settings also shows the device model, firmware, full serial number and production lot; refresh to read them again. Consult the activity log when reporting connection, detection or upgrade issues.
+For firmware updates, retrieve the available versions, select a package compatible with the device, and follow the on-screen progress and result. Do not disconnect power or the data cable during the update. Updating the UCE Tool application itself is a separate operation available from the About menu.
 
-<a id="software-update"></a>
-## Update UCE Tool
+### Troubleshooting
 
-This updates the **desktop application**, not device firmware. In Windows use the top **About → Check for updates** menu; on macOS use **UCE → Check for updates** in the system menu.
-
-Follow the prompt when a compatible update is available. Otherwise, open the release page and install the matching package manually after closing the old app. Finish any device firmware operation before updating the desktop application. Older Mac versions that do not support DMG updates require one manual installation of the newer app.
-
-<a id="faq"></a>
-## Troubleshooting
-
-- **Device disconnected:** Check the data cable and USB port, close other serial tools, and verify the device is running compatible APP firmware. Check the activity log if the system recognizes the device but UCE Tool cannot connect.
-- **No readings or chart:** Confirm the device is connected and start acquisition. Paused or BOOT mode devices do not produce live samples.
-- **E-Marker fields show Unknown:** The cable or firmware may not report those fields. Check raw VDOs and other results.
-- **GitHub request failed or was rate-limited:** Check network and proxy settings, try again later or use another network, and retain the full error when reporting a problem. An older Mac app with certificate errors should be replaced with a newer build containing the certificate fix.
-- **Theme preview changes but the device does not:** Connect the device and apply or save the colors; check firmware support for the affected area. Use Save to keep colors after restart.
-- **Which Mac download?** Use `arm64` for Apple Silicon and `x86_64` for Intel; check About This Mac.
-- **An application update cannot be installed automatically:** Download the matching package from the release page and replace the old app after closing it.
-
-When reporting an issue, include the OS version and processor, UCE Tool version, device hardware and APP firmware versions, steps to reproduce, full error or screenshot, and relevant activity logs.
+- **No device appears:** check power, the data cable and port, then reconnect the device. If the card appears, click it to connect.
+- **Device busy:** stop another E-Marker query, PD detection, capture, or update and wait for it to finish.
+- **No E-Marker result:** check the cable and connection; not every cable has an E-Marker, and some details may not be reported.
+- **No packets in the analyzer:** confirm the device is connected, capture is running, and the test circuit is connected to the correct ports. Check whether GoodCRC is hidden.
+- **Update or export fails:** check the displayed error, available storage, the selected firmware, and the connection, then retry.

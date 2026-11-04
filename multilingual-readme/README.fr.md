@@ -2,135 +2,91 @@
 
 [简体中文](README.zh-CN.md) | [English](README.en.md) | [Deutsch](README.de.md) | [日本語](README.ja.md) | **Français**
 
-UCE Tool est l'application de bureau du USB-C Explorer. Elle affiche les mesures en direct, lit les données E-Marker, détecte les protocoles de charge, met à jour le micrologiciel et configure les couleurs de l'appareil.
+UCE Tool est l'application de bureau du USB-C Explorer. Elle permet de consulter les mesures en direct, lire les E-Marker, effectuer une détection ou une capture PD, configurer le thème de l'appareil et mettre à jour son micrologiciel.
 
-Elle prend en charge Windows 64 bits et les Mac Apple Silicon ou Intel, avec une interface en chinois, anglais, allemand, japonais et français.
+## Installation et connexion
 
-**[Télécharger la dernière version](https://github.com/Tamako-zz/UCE-Tool/releases/latest)** · **[Toutes les versions](https://github.com/Tamako-zz/UCE-Tool/releases)**
+Téléchargez le paquet Windows ou macOS adapté depuis la [page des versions](https://github.com/Tamako-zz/UCE-Tool/releases/latest). Sous Windows, extrayez le paquet puis ouvrez l'application ; sur Mac, installez l'application dans le dossier Applications.
 
-## Sommaire
+Reliez l'appareil à l'ordinateur avec un câble USB prenant en charge les données. Cliquez sur sa carte dans la barre latérale pour le connecter. Cliquez de nouveau sur la carte connectée pour le déconnecter, ou sur une autre carte pour changer d'appareil. La recherche des appareils est automatique, leur connexion ne l'est pas.
 
-- [Téléchargement et installation](#download)
-- [Connexion de l'appareil](#connect)
-- [Tableau de bord et graphique](#dashboard)
-- [E-Marker et historique](#emarker)
-- [Protocoles de charge et PDO](#protocol)
-- [Mise à jour du micrologiciel](#firmware)
-- [Couleurs de l'appareil](#theme)
-- [Langue, apparence et informations](#settings)
-- [Mise à jour de UCE Tool](#software-update)
-- [Dépannage](#faq)
+## Tableau de bord
 
-<a id="download"></a>
-## Téléchargement et installation
+Ouvrez le **Tableau de bord** et cliquez sur l'icône de démarrage pour afficher les mesures et les courbes. Les commandes permettent de choisir les courbes, modifier la fréquence et la durée affichée, mettre en pause ou effacer le graphique.
 
-Sur la [page des versions](https://github.com/Tamako-zz/UCE-Tool/releases/latest), ouvrez **Assets** et choisissez le fichier adapté :
+## E-Marker
 
-| Fichier | Plateforme | Application |
-| --- | --- | --- |
-| `UCE-Windows-x64.zip` | Windows 64 bits, Intel / AMD | `UCE.exe` |
-| `UCE-mac-arm64.dmg` | Mac Apple Silicon (série M) | `UCE.app` |
-| `UCE-mac-x86_64.dmg` | Mac Intel | `UCE.app` |
+Branchez le câble selon les indications des ports et ouvrez **E-Marker**. Cliquez sur **Lire** pour obtenir les informations du câble. La lecture continue se lance et s'arrête avec le même bouton. Avant de la démarrer, débranchez les appareils alimentés de la sortie, conformément à l'avertissement affiché.
 
-Sur Mac, le processeur est indiqué dans **menu Apple → À propos de ce Mac**.
+L'onglet des enregistrements permet de consulter les résultats de la session, de les exporter vers Excel ou de les effacer. Les champs non transmis ou non reconnus sont indiqués comme inconnus.
 
-**Windows :** extrayez complètement le ZIP, puis ouvrez `UCE.exe` depuis le dossier extrait.
+## Détection PD
 
-**macOS :** ouvrez le DMG adapté, glissez `UCE.app` vers **Applications**, éjectez l'image disque, puis ouvrez UCE depuis Applications. Si macOS bloque le premier lancement, vérifiez la provenance et autorisez l'ouverture dans **Réglages Système → Confidentialité et sécurité**.
+Branchez le chargeur à tester et ouvrez la **détection PD**. Démarrez la détection, lisez et confirmez l'avertissement. Les PDO et leurs résultats individuels s'affichent ; le même bouton permet d'arrêter une détection en cours. Les résultats peuvent être consultés, exportés vers Excel ou effacés.
 
-<a id="connect"></a>
-## Connexion de l'appareil
+**La tension peut augmenter pendant la détection. Débranchez les appareils alimentés de la sortie avant de commencer.**
 
-Il vous faut un USB-C Explorer, un câble USB permettant le transfert de données et un micrologiciel APP adapté au matériel. Les fonctions de thème et de détection nécessitent aussi un micrologiciel compatible.
+## Analyseur PD
 
-1. Lancez UCE Tool et connectez l'appareil à l'ordinateur par son interface de données.
-2. Le logiciel recherche les appareils et tente de se connecter automatiquement. Vérifiez l'état **Connecté** à gauche.
-3. Ouvrez la page souhaitée. La carte affiche le nom, une partie du numéro de série et la version APP ; le numéro complet figure dans les paramètres.
+Branchez le circuit à tester conformément aux indications des ports. Ouvrez l'**analyseur PD** et démarrez la capture ; le même bouton permet de l'arrêter. Sélectionnez un paquet pour afficher son en-tête et ses objets de données en dessous de la liste. Faites glisser la séparation pour ajuster la taille des zones.
 
-Cliquez sur une carte pour changer d'appareil. Attendez la fin d'une mise à jour avant de changer. Le **mode BOOT** permet de restaurer l'APP par mise à jour du micrologiciel ; les mesures en direct nécessitent une APP fonctionnelle.
+Le commutateur GoodCRC affiche ou masque les paquets GoodCRC. L'export Excel comprend aussi les paquets masqués.
 
-<a id="dashboard"></a>
-## Tableau de bord et graphique
+## Configuration du thème
 
-Connectez l'appareil, ouvrez le **Tableau de bord** et cliquez sur l'icône de démarrage. Les valeurs et le graphique se mettent à jour à la réception des mesures.
+Utilisez les flèches pour choisir un écran de l'appareil, puis cliquez sur une zone de couleur ou sur la couleur d'arrière-plan.
 
-| Canal | Signification |
-| --- | --- |
-| VBUS / IBUS / POWER | Tension (V), courant (A) et puissance (W) |
-| D+ / D− | Tensions des lignes de données USB |
-| CC1 / CC2 | Tensions des broches CC USB-C |
+- **Restaurer les valeurs par défaut** rétablit les couleurs initiales.
+- **Lire depuis l'appareil** charge les couleurs actuelles.
+- **Appliquer à l'appareil** applique les couleurs temporairement.
+- **Enregistrer sur l'appareil** les conserve après redémarrage.
 
-Cliquez sur les canaux pour afficher ou masquer leurs courbes. La tension, le courant et la puissance ont des échelles distinctes. Survolez le graphique pour consulter les mesures ; `--` indique l'absence de donnée à cet endroit.
+## Micrologiciel et paramètres
 
-Fréquences d'échantillonnage : **1, 10 ou 50 SPS** ; fenêtre d'affichage : **10, 30, 60 ou 120 secondes**. Le bouton d'arrêt met l'acquisition en pause ; la durée de pause n'est pas comptée à la reprise. Effacer supprime l'historique et remet le temps à zéro. Après un effacement en pause, redémarrez l'acquisition.
+Ouvrez la page de mise à jour du micrologiciel, récupérez la liste des versions et choisissez celle qui correspond à votre appareil. Suivez les instructions et maintenez l'appareil connecté et alimenté jusqu'à la fin.
 
-<a id="emarker"></a>
-## E-Marker et historique
+Les paramètres permettent de changer la langue et de consulter les informations de l'appareil ; la barre latérale permet de changer le mode clair ou sombre. Les enregistrements sont conservés pour la session en cours : exportez ceux dont vous avez besoin avant de fermer l'application. Si l'appareil est occupé, arrêtez d'abord toute autre détection ou capture.
 
-Connectez le câble au port indiqué, ouvrez **E-Marker** et cliquez sur **Lire** ou **Lecture continue**. Avant la détection continue, débranchez tous les autres appareils alimentés de la sortie. Le même bouton arrête la lecture continue.
+## Informations complémentaires
 
-Selon les données fournies, la page affiche le type de câble, le courant nominal, la tension maximale, la vitesse USB, la version PD, TBT, EPR et la longueur ou latence. Les champs non communiqués ou non reconnus indiquent « Inconnu ». Si aucun E-Marker n'est détecté, vérifiez le câble et son branchement. Les VDO bruts figurent sous l'illustration.
+### Démarrage et connexion
 
-Les lectures réussies sont ajoutées à l'historique de la session. L'export crée un fichier `.xlsx` avec la date, les informations du câble et les VDO bruts. Les dates utilisent UTC+8. L'historique est effacé à la fermeture : exportez les données à conserver.
+Les applications Windows et macOS ne nécessitent pas d'installation séparée de Python pour une utilisation normale. Sur Mac, choisissez le paquet Apple Silicon ou Intel adapté. Si macOS bloque le premier lancement, vérifiez la provenance de l'application, puis autorisez-la dans **Réglages Système → Confidentialité et sécurité**.
 
-<a id="protocol"></a>
-## Protocoles de charge et PDO
+Reliez l'interface de données de l'appareil à l'ordinateur. Un câble de charge uniquement peut alimenter l'appareil sans permettre la communication. La barre latérale affiche le nom, une partie du numéro de série et la version APP ; le numéro complet est disponible dans les informations de l'appareil. Le mode BOOT permet la récupération du micrologiciel, mais les mesures et détections nécessitent le micrologiciel applicatif.
 
-Connectez le chargeur ou la source au port indiqué, ouvrez **Détection PD** et lancez la détection. La tension peut augmenter pendant le test : débranchez d'abord les appareils alimentés de la sortie. Le même bouton permet d'arrêter la détection.
+### Lire le tableau de bord
 
-La page présente la tension, le courant et la puissance des PDO ainsi que l'état de chaque test : réussi, échoué, en attente ou non pris en charge. Les tests disponibles dépendent du micrologiciel de l'appareil. Si l'appareil est occupé, arrêtez le test en cours avant une autre opération.
+VBUS représente la tension, IBUS le courant et POWER la puissance. D+ / D− et CC1 / CC2 indiquent les tensions des signaux correspondants. Les courbes de tension, courant et puissance utilisent des échelles distinctes : vérifiez l'unité lors d'une comparaison. Placez le pointeur sur le graphique pour consulter les mesures ; `--` indique qu'aucune valeur n'est disponible à cet endroit.
 
-<a id="firmware"></a>
-## Mise à jour du micrologiciel
+La fréquence peut être réglée sur 1, 10 ou 50 mesures par seconde et la durée affichée sur 10, 30, 60 ou 120 secondes. La pause fige l'affichage ; la reprise continue l'acquisition. Effacer supprime l'historique affiché.
 
-Cette page met à jour le micrologiciel **de l'USB-C Explorer**.
+### Résultats E-Marker et PD
 
-1. Connectez l'appareil et ouvrez **Mise à jour du micrologiciel**.
-2. Cliquez sur **Obtenir les versions** pour charger la liste.
-3. Consultez les notes et choisissez une version compatible avec votre matériel. Si plusieurs fichiers BIN sont proposés, choisissez le bon selon les notes.
-4. Cliquez sur **Mettre à jour** dans la carte correspondante. Le fichier choisi est téléchargé, vérifié, puis transmis à l'appareil. La carte affiche la progression et le résultat.
+Les informations E-Marker disponibles dépendent du câble et du micrologiciel. La page peut afficher le type de câble, le courant nominal, la tension maximale, la vitesse de données, la version PD, TBT, EPR et la longueur ou la latence. Une longueur estimée à partir de la latence n'est pas une mesure physique. Les données E-Marker brutes figurent sous les informations du câble.
 
-Seul le fichier sélectionné est téléchargé ; le fichier temporaire est nettoyé après l'opération. Gardez l'USB connecté et ne changez pas d'appareil pendant la mise à jour. Ensuite, actualisez les informations dans les paramètres pour vérifier la version APP. En cas d'échec, conservez le message, vérifiez la connexion et la compatibilité, puis réessayez.
+La détection PD lit les PDO annoncés par le chargeur et affiche les états de test individuels lorsque le micrologiciel les fournit. Un profil annoncé ne signifie pas automatiquement que son test a réussi. Les onglets au-dessus des résultats permettent de basculer entre résultats et historique. Si une fonction n'est pas prise en charge, utilisez un micrologiciel compatible.
 
-<a id="theme"></a>
-## Couleurs de l'appareil
+Les historiques E-Marker et PD correspondent à la session en cours. Effacer les enregistrements vide la liste actuelle ; l'export Excel crée un fichier `.xlsx`. Enregistrez les résultats nécessaires avant de fermer l'application.
 
-Ouvrez **Configuration du thème**, utilisez les flèches pour changer de page d'aperçu, cliquez sur les zones modifiables et choisissez la couleur d'arrière-plan sous l'aperçu. **Appliquer à l'appareil** permet de prévisualiser les couleurs ; **Enregistrer sur l'appareil** les conserve après redémarrage.
+### Lire une capture PD
 
-L'aperçu comprend les mesures, statistiques, E-Marker, protocoles et paramètres. Dans les statistiques, les zones configurables comprennent le titre, MAX, CUR, Ah et Wh. Leur modification nécessite un micrologiciel compatible.
+Le tableau affiche notamment le type de message, le canal SOP, l'identifiant, la direction, le nombre d'objets, la révision PD, le temps écoulé, les mesures de tension et de courant, les données brutes et les notes. Sélectionnez une ligne pour détailler l'en-tête et les champs des objets disponibles. La zone de détail défile horizontalement et verticalement lorsque nécessaire.
 
-| Action | Effet |
-| --- | --- |
-| Rétablir les valeurs par défaut | Réinitialiser les couleurs de l'aperçu |
-| Lire depuis l'appareil | Remplacer l'aperçu par les couleurs actuelles |
-| Appliquer à l'appareil | Prévisualiser sans enregistrer durablement |
-| Enregistrer sur l'appareil | Appliquer et conserver après redémarrage |
+Attach et Detach sont des événements de connexion ; Hard Reset est un événement de réinitialisation sur la liaison PD surveillée. Lorsqu'un champ ne peut pas être interprété avec certitude, sa valeur brute peut être affichée. Pour les messages de câble, la direction indique une communication entre le port et la fiche lorsque l'émetteur exact n'est pas connu.
 
-Survolez les boutons pour afficher leur description. Si une zone ne change pas sur l'appareil, vérifiez la prise en charge par son micrologiciel.
+Le masquage GoodCRC ne change que l'affichage : les paquets masqués restent inclus dans l'export Excel.
 
-<a id="settings"></a>
-## Langue, apparence et informations
+### Couleurs et micrologiciel
 
-Dans **Langue de l'interface**, choisissez 简体中文, English, Deutsch, 日本語 ou Français. Le choix est enregistré et ne change pas la langue de l'appareil. Les notes de version utilisent les traductions fournies par leur auteur ; les données brutes restent inchangées.
+Modifiez d'abord les couleurs dans l'aperçu. **Appliquer à l'appareil** permet de vérifier temporairement le résultat ; utilisez **Enregistrer sur l'appareil** pour le conserver après extinction. **Lire depuis l'appareil** remplace l'aperçu par les couleurs actuelles, tandis que la restauration des valeurs par défaut réinitialise les couleurs dans l'éditeur.
 
-Les commandes de la barre latérale permettent de changer le thème clair/sombre et de masquer ou afficher la navigation. L'apparence du logiciel et les couleurs de l'appareil sont indépendantes. Les paramètres affichent le modèle, le micrologiciel, le numéro de série complet et le lot ; actualisez pour les relire. Consultez le journal d'activité en cas de problème.
+Pour mettre à jour le micrologiciel, récupérez la liste des versions, choisissez un paquet compatible et vérifiez la progression et le résultat. Ne débranchez ni l'alimentation ni le câble de données pendant l'opération. La mise à jour de l'application UCE Tool est distincte et accessible depuis le menu À propos.
 
-<a id="software-update"></a>
-## Mise à jour de UCE Tool
+### Dépannage
 
-Cette fonction met à jour **l'application de bureau**, pas le micrologiciel de l'appareil. Sous Windows, utilisez le menu **À propos → Rechercher des mises à jour** en haut de la fenêtre ; sous macOS, utilisez **UCE → Rechercher des mises à jour** dans le menu système.
-
-Suivez les instructions si un paquet compatible est disponible. Sinon, téléchargez le paquet adapté sur la page des versions et remplacez l'ancienne application après l'avoir fermée. Terminez d'abord toute opération sur le micrologiciel. Les anciennes versions Mac sans prise en charge des mises à jour DMG nécessitent une installation manuelle initiale de la nouvelle version.
-
-<a id="faq"></a>
-## Dépannage
-
-- **Appareil non connecté :** vérifiez le câble de données et le port USB, fermez les autres outils série et vérifiez que l'APP est compatible. Si le système reconnaît l'appareil mais pas UCE Tool, consultez le journal.
-- **Pas de mesures ou de courbe :** vérifiez la connexion et démarrez l'acquisition. Les mesures ne continuent pas en pause ou en mode BOOT.
-- **Champ E-Marker inconnu :** le câble ou le micrologiciel peut ne pas fournir cette information. Consultez les VDO bruts et les autres résultats.
-- **Requête GitHub échouée ou limitée :** vérifiez le réseau et le proxy, réessayez plus tard ou sur un autre réseau, et conservez le message complet. En cas d'erreur de certificat avec une ancienne version Mac, installez une version plus récente contenant le correctif.
-- **Couleurs non appliquées :** connectez l'appareil et appliquez ou enregistrez les couleurs ; vérifiez la compatibilité du micrologiciel. Pour conserver les couleurs après redémarrage, utilisez Enregistrer.
-- **Quel fichier Mac ?** `arm64` pour Apple Silicon, `x86_64` pour Intel. Consultez « À propos de ce Mac ».
-- **Mise à jour automatique indisponible :** téléchargez le paquet adapté depuis la page des versions et remplacez manuellement l'ancienne application après l'avoir fermée.
-
-Pour signaler un problème, indiquez le système et le processeur, la version de UCE Tool, les versions matérielle et APP de l'appareil, les étapes, le message d'erreur complet ou une capture, ainsi que les journaux utiles.
+- **Aucun appareil affiché** : vérifiez l'alimentation, le câble de données et le port, puis reconnectez l'appareil. Cliquez sur sa carte lorsqu'elle apparaît.
+- **Appareil occupé** : arrêtez toute autre lecture E-Marker, détection PD, capture ou mise à jour, puis attendez la fin de l'opération.
+- **Aucun résultat E-Marker** : vérifiez le câble et son branchement. Tous les câbles ne possèdent pas d'E-Marker et certaines informations peuvent ne pas être transmises.
+- **Aucun paquet visible** : vérifiez la connexion de l'appareil, le démarrage de la capture et les ports de test. Vérifiez aussi si GoodCRC est masqué.
+- **Échec d'une mise à jour ou d'un export** : vérifiez l'erreur affichée, l'espace disponible, le choix du micrologiciel et la connexion, puis réessayez.

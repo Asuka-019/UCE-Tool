@@ -2,135 +2,91 @@
 
 [简体中文](README.zh-CN.md) | [English](README.en.md) | **Deutsch** | [日本語](README.ja.md) | [Français](README.fr.md)
 
-UCE Tool ist die Desktop-Anwendung für USB-C Explorer. Sie zeigt Live-Messwerte, liest E-Marker-Daten, erkennt Ladeprotokolle, aktualisiert die Gerätefirmware und konfiguriert Gerätefarben.
+UCE Tool ist die Desktop-Anwendung für USB-C Explorer. Sie bietet Live-Messwerte, E-Marker-Abfragen, PD-Erkennung und -Aufzeichnung, Geräteeinstellungen für Farben sowie Firmware-Updates.
 
-Unterstützt werden Windows 64-Bit sowie Macs mit Apple Silicon und Intel. Die Oberfläche ist auf Chinesisch, Englisch, Deutsch, Japanisch und Französisch verfügbar.
+## Installation und Verbindung
 
-**[Neueste Version herunterladen](https://github.com/Tamako-zz/UCE-Tool/releases/latest)** · **[Alle Versionen](https://github.com/Tamako-zz/UCE-Tool/releases)**
+Laden Sie das passende Windows- oder macOS-Paket von der [Release-Seite](https://github.com/Tamako-zz/UCE-Tool/releases/latest) herunter. Entpacken und starten Sie die Windows-Anwendung bzw. installieren Sie die Mac-App im Ordner „Programme“.
 
-## Inhalt
+Verbinden Sie das Gerät über ein datenfähiges USB-Kabel mit dem Computer. Klicken Sie links auf die Gerätekarte, um die Verbindung herzustellen. Ein erneuter Klick auf die verbundene Karte trennt die Verbindung; ein Klick auf eine andere Karte wechselt das Gerät. Die Gerätesuche stellt keine automatische Verbindung her.
 
-- [Download und Installation](#download)
-- [Gerät verbinden](#connect)
-- [Dashboard und Live-Diagramm](#dashboard)
-- [E-Marker und Protokoll](#emarker)
-- [Ladeprotokolle und PDOs](#protocol)
-- [Gerätefirmware aktualisieren](#firmware)
-- [Gerätefarben konfigurieren](#theme)
-- [Sprache, Darstellung und Geräteinformationen](#settings)
-- [UCE Tool aktualisieren](#software-update)
-- [Fehlerbehebung](#faq)
+## Dashboard
 
-<a id="download"></a>
-## Download und Installation
+Öffnen Sie das **Dashboard** und klicken Sie auf das Startsymbol, um Messwerte und Kurven anzuzeigen. Über die Kanalsteuerung lassen sich Kurven auswählen, Abtastrate und Zeitbereich ändern sowie die Aufzeichnung anhalten oder löschen.
 
-Auf der [Release-Seite](https://github.com/Tamako-zz/UCE-Tool/releases/latest) unter **Assets** die passende Datei auswählen:
+## E-Marker
 
-| Datei | Plattform | Anwendung |
-| --- | --- | --- |
-| `UCE-Windows-x64.zip` | Windows 64-Bit, Intel / AMD | `UCE.exe` |
-| `UCE-mac-arm64.dmg` | Mac mit Apple Silicon (M-Serie) | `UCE.app` |
-| `UCE-mac-x86_64.dmg` | Mac mit Intel | `UCE.app` |
+Schließen Sie das Kabel entsprechend der Gerätebeschriftung an und öffnen Sie **E-Marker**. Klicken Sie auf **Lesen**, um die gemeldeten Kabeldaten anzuzeigen. Die kontinuierliche Abfrage starten und beenden Sie mit derselben Schaltfläche. Entfernen Sie vor der kontinuierlichen Abfrage entsprechend dem Hinweis der Anwendung angeschlossene Verbraucher vom Ausgang.
 
-Den Mac-Prozessor finden Sie unter **Apple-Menü → Über diesen Mac**.
+Unter **Erkennungsverlauf** finden Sie die Ergebnisse dieser Sitzung. Sie können sie nach Excel exportieren oder löschen. Nicht gemeldete oder nicht erkannte Felder werden als unbekannt angezeigt.
 
-**Windows:** ZIP vollständig entpacken und `UCE.exe` aus dem entpackten Ordner starten.
+## PD-Erkennung
 
-**macOS:** Passende DMG öffnen, `UCE.app` nach **Applications** ziehen, das Abbild auswerfen und UCE aus „Programme“ öffnen. Blockiert macOS den ersten Start, prüfen Sie die Quelle und erlauben Sie das Öffnen unter **Systemeinstellungen → Datenschutz & Sicherheit**.
+Schließen Sie das zu prüfende Ladegerät an und öffnen Sie **PD-Erkennung**. Starten Sie die Erkennung, lesen und bestätigen Sie die Warnung. Die Seite zeigt PDOs und ihre einzelnen Prüfergebnisse; mit derselben Schaltfläche lässt sich eine laufende Prüfung stoppen. Der Verlauf kann angezeigt, nach Excel exportiert oder gelöscht werden.
 
-<a id="connect"></a>
-## Gerät verbinden
+**Während der Prüfung kann die Spannung steigen. Trennen Sie vor dem Start alle Verbraucher vom Ausgang.**
 
-Sie benötigen einen USB-C Explorer, ein datenfähiges USB-Kabel und zur Hardware passende APP-Firmware. Themen- und Protokollfunktionen benötigen ebenfalls kompatible Firmware.
+## PD-Analysator
 
-1. UCE Tool starten und das Gerät über seine Datenschnittstelle verbinden.
-2. Die Anwendung sucht Geräte und versucht automatisch eine Verbindung. Links muss **Verbunden** erscheinen.
-3. Gewünschte Seite öffnen. Die Gerätekarte zeigt Name, abgekürzte Seriennummer und APP-Version; die vollständige Seriennummer steht in den Einstellungen.
+Verbinden Sie die Prüfschaltung gemäß den Anschlussmarkierungen des Geräts. Öffnen Sie den **PD-Analysator** und starten Sie die Aufzeichnung; dieselbe Schaltfläche beendet sie. Wählen Sie ein Paket aus, um darunter Header und Datenobjekte anzusehen. Die Trennlinie zwischen Liste und Details ist verschiebbar.
 
-Bei mehreren Geräten durch Anklicken der Gerätekarte wechseln. Während eines Updates warten, bis der Vorgang abgeschlossen ist. Im **BOOT-Modus** kann die APP per Firmware-Update wiederhergestellt werden; Live-Messungen benötigen laufende APP-Firmware.
+Mit dem GoodCRC-Schalter lassen sich GoodCRC-Pakete ein- und ausblenden. Der Excel-Export enthält auch ausgeblendete GoodCRC-Pakete.
 
-<a id="dashboard"></a>
-## Dashboard und Live-Diagramm
+## Themenkonfiguration
 
-Gerät verbinden, **Dashboard** öffnen und das Startsymbol anklicken. Messwerte und Diagramm werden laufend aktualisiert.
+Wählen Sie mit den Pfeilen eine Geräteansicht und klicken Sie auf einen Farbbereich oder die Hintergrundfarbe.
 
-| Kanal | Bedeutung |
-| --- | --- |
-| VBUS / IBUS / POWER | Spannung (V), Strom (A) und Leistung (W) |
-| D+ / D− | Spannungen der USB-Datenleitungen |
-| CC1 / CC2 | Spannungen der USB-C-CC-Pins |
+- **Standard wiederherstellen** setzt die Farben zurück.
+- **Vom Gerät lesen** lädt die aktuellen Farben.
+- **Auf Gerät anwenden** wendet die Farben vorübergehend an.
+- **Auf Gerät speichern** behält die Farben auch nach einem Neustart bei.
 
-Kanalschaltflächen zeigen oder verbergen Kurven. Spannung, Strom und Leistung haben eigene Skalen. Mit der Maus über dem Diagramm lassen sich Messpunkte anzeigen; `--` bedeutet, dass dort kein Messwert vorliegt.
+## Firmware und Einstellungen
 
-Abtastraten: **1, 10 oder 50 SPS**; Zeitfenster: **10, 30, 60 oder 120 Sekunden**. Die Stopp-Schaltfläche pausiert die Erfassung; beim Fortsetzen zählt die Pausenzeit nicht mit. „Leeren“ entfernt den Verlauf und setzt die Zeit zurück; im pausierten Zustand muss anschließend erneut gestartet werden.
+Öffnen Sie **Firmware-Update**, rufen Sie die verfügbaren Versionen ab und wählen Sie die passende Firmware. Folgen Sie den Hinweisen und halten Sie das Gerät bis zum Abschluss verbunden und eingeschaltet.
 
-<a id="emarker"></a>
-## E-Marker und Protokoll
+In den Einstellungen können Sie die Sprache ändern und Geräteinformationen anzeigen. Über die Seitenleiste wechseln Sie zwischen hellem und dunklem Modus. Aufzeichnungen gelten für die aktuelle Sitzung und sollten bei Bedarf vor dem Schließen exportiert werden. Ist das Gerät beschäftigt, beenden Sie zunächst andere Prüfungen oder Aufzeichnungen.
 
-Kabel am gekennzeichneten Anschluss anschließen, **E-Marker** öffnen und **Lesen** oder **Kontinuierlich lesen** wählen. Vor der kontinuierlichen Erkennung alle anderen Verbraucher vom Geräteausgang trennen. Dieselbe Schaltfläche beendet die kontinuierliche Erkennung.
+## Weitere Hinweise
 
-Je nach Meldung zeigt die Seite Kabeltyp, Strom, maximale Spannung, USB-Geschwindigkeit, PD-Version, TBT, EPR und Länge/Latenz. Nicht gemeldete oder unbekannte Werte werden als „Unbekannt“ angezeigt. Wird kein E-Marker gefunden, Kabel und Anschluss prüfen. Die VDO-Rohdaten stehen unter der Grafik.
+### Anwendung starten und Gerät verbinden
 
-Erfolgreiche Lesungen erscheinen im Erkennungsprotokoll der aktuellen Sitzung. Der Export erstellt eine `.xlsx`-Datei mit Zeitstempeln, Kabelinformationen und VDOs. Die Zeitangaben verwenden UTC+8. Beim Beenden wird das Protokoll gelöscht; benötigte Daten vorher exportieren.
+Die Anwendungspakete für Windows und macOS benötigen für die normale Verwendung keine separate Python-Installation. Wählen Sie auf dem Mac das Paket für Apple Silicon oder Intel. Falls macOS den ersten Start blockiert, prüfen Sie die Herkunft und erlauben Sie die App unter **Systemeinstellungen → Datenschutz & Sicherheit**.
 
-<a id="protocol"></a>
-## Ladeprotokolle und PDOs
+Verbinden Sie die Datenschnittstelle des Geräts mit dem Computer. Ein reines Ladekabel kann das Gerät mit Strom versorgen, ohne eine Datenverbindung herzustellen. Die Seitenleiste zeigt Gerätename, verkürzte Seriennummer und APP-Version; die vollständige Seriennummer steht in den Geräteinformationen. Im BOOT-Modus ist eine Firmware-Wiederherstellung möglich, für Messung und Erkennung muss die Geräteanwendung laufen.
 
-Ladegerät oder Quelle am gekennzeichneten Anschluss verbinden, **PD-Erkennung** öffnen und die Erkennung starten. Dabei kann die Spannung steigen: Vorher alle Verbraucher vom Ausgang trennen. Mit derselben Schaltfläche lässt sich die Erkennung stoppen.
+### Dashboard ablesen
 
-Die Seite zeigt gemeldete PDO-Spannung, Strom und Leistung sowie die jeweiligen Zustände „Bestanden“, „Fehlgeschlagen“, „Ausstehend“ oder „Nicht unterstützt“. Die verfügbaren Tests hängen von der Gerätefirmware ab. Ist das Gerät beschäftigt, zuerst den laufenden Test beenden.
+VBUS bezeichnet die Spannung, IBUS den Strom und POWER die Leistung. D+ / D− und CC1 / CC2 zeigen die jeweiligen Signalspannungen. Für Spannung, Strom und Leistung gelten getrennte Skalen. Bewegen Sie den Mauszeiger über das Diagramm, um Messpunkte anzusehen; `--` bedeutet, dass an dieser Stelle kein Wert vorliegt.
 
-<a id="firmware"></a>
-## Gerätefirmware aktualisieren
+Die Abtastrate ist auf 1, 10 oder 50 Messungen pro Sekunde einstellbar, der angezeigte Zeitraum auf 10, 30, 60 oder 120 Sekunden. Beim Anhalten bleibt die Anzeige stehen; beim Fortsetzen werden wieder Messwerte aufgenommen. Löschen entfernt den angezeigten Verlauf.
 
-Diese Seite aktualisiert die Firmware **auf dem USB-C Explorer**.
+### E-Marker- und PD-Ergebnisse
 
-1. Gerät verbinden und **Firmware-Update** öffnen.
-2. **Versionen abrufen** anklicken.
-3. Hinweise lesen und eine zur Hardware passende Version auswählen. Bei mehreren BIN-Dateien die passende Datei anhand der Versionshinweise wählen.
-4. Auf der Versionskarte **Aktualisieren** anklicken. Die gewählte Firmware wird heruntergeladen, geprüft und übertragen. Fortschritt und Ergebnis stehen auf der Karte.
+Welche E-Marker-Felder verfügbar sind, hängt vom Kabel und von der Firmware ab. Angezeigt werden können Kabeltyp, Strom, maximale Spannung, Datenrate, PD-Version, TBT, EPR sowie Länge oder Latenz. Eine aus der Latenz geschätzte Länge ist keine physische Messung. Die E-Marker-Rohdaten stehen unterhalb der Kabelinformationen.
 
-Nur die gewählte Firmware wird heruntergeladen; die temporäre Datei wird nach dem Vorgang bereinigt. USB während des Updates verbunden lassen und nicht das Gerät wechseln. Danach in den Einstellungen die Geräteinformationen aktualisieren und die APP-Version prüfen. Bei Fehlern Meldung aufbewahren, Verbindung und Kompatibilität prüfen und erneut versuchen.
+Die PD-Erkennung liest die angebotenen PDOs und zeigt einzelne Prüfzustände, sofern die Firmware sie meldet. Ein angebotenes Profil bedeutet nicht automatisch, dass dessen Prüfung bestanden wurde. Mit den Reitern über den Ergebnissen wechseln Sie zwischen Ergebnis und Verlauf. Falls eine Funktion nicht unterstützt wird, verwenden Sie eine passende Gerätefirmware.
 
-<a id="theme"></a>
-## Gerätefarben konfigurieren
+Die E-Marker- und PD-Verläufe gelten für die aktuelle Sitzung. **Verlauf löschen** entfernt die aktuelle Liste; der Excel-Export erstellt eine `.xlsx`-Datei. Speichern Sie benötigte Ergebnisse vor dem Schließen.
 
-**Themenkonfiguration** öffnen, mit den Pfeilen die Vorschauseite wechseln, bearbeitbare Farbfelder anklicken und den Hintergrund unter der Vorschau wählen. **Auf Gerät anwenden** zeigt die Farben sofort; **Auf Gerät speichern** erhält sie nach einem Neustart.
+### PD-Aufzeichnungen lesen
 
-Die Vorschau umfasst Messungen, Statistik, E-Marker, Protokollerkennung und Geräteeinstellungen. Auf der Statistikseite sind Titel, MAX, CUR, Ah und Wh konfigurierbar; die Gerätefirmware muss diese Bereiche unterstützen.
+Die Tabelle zeigt unter anderem Nachrichtentyp, SOP-Kanal, Nachrichten-ID, Richtung, Objektanzahl, PD-Revision, verstrichene Zeit, Spannungs-/Strommesswert, Rohdaten und Hinweise. Nach Auswahl einer Zeile werden Header und verfügbare Datenobjektfelder darunter aufgeschlüsselt. Bei vielen Feldern kann der Detailbereich horizontal und vertikal gescrollt werden.
 
-| Aktion | Wirkung |
-| --- | --- |
-| Standard wiederherstellen | Vorschaufarben zurücksetzen |
-| Vom Gerät lesen | Vorschau durch aktuelle Gerätefarben ersetzen |
-| Auf Gerät anwenden | Farben ohne dauerhafte Speicherung anzeigen |
-| Auf Gerät speichern | Farben anwenden und dauerhaft speichern |
+Attach und Detach sind Verbindungsereignisse; Hard Reset ist ein Rücksetzereignis auf der überwachten PD-Verbindung. Kann die Bedeutung eines Feldes nicht sicher bestimmt werden, können Rohwerte angezeigt werden. Bei Kabelnachrichten wird die Kommunikation zwischen Port und Stecker angegeben, wenn der genaue Sender nicht bekannt ist.
 
-Kurze Beschreibungen erscheinen beim Darüberfahren. Wenn ein Gerätebereich unverändert bleibt, die Firmware-Unterstützung prüfen.
+Das Ausblenden von GoodCRC betrifft nur die Anzeige: Der Excel-Export enthält auch diese Pakete.
 
-<a id="settings"></a>
-## Sprache, Darstellung und Geräteinformationen
+### Farben und Firmware
 
-Unter **Oberflächensprache** stehen 简体中文, English, Deutsch, 日本語 und Français zur Auswahl. Die Auswahl wird gespeichert und ändert nicht die Gerätesprache. Versionshinweise verwenden vom Herausgeber bereitgestellte Übersetzungen; Gerätedaten bleiben unverändert.
+Ändern Sie Farben zunächst in der Vorschau. **Auf Gerät anwenden** dient zur vorübergehenden Kontrolle; mit **Auf Gerät speichern** bleiben sie nach dem Ausschalten erhalten. **Vom Gerät lesen** ersetzt die Vorschau durch die aktuellen Gerätefarben; **Standard wiederherstellen** setzt die Werte im Editor zurück.
 
-Über die Seitenleiste lassen sich helles/dunkles Design und Navigation umschalten. Desktop-Darstellung und Gerätefarben werden getrennt eingestellt. Die Einstellungen zeigen Modell, Firmware, vollständige Seriennummer und Produktionslos; über Aktualisieren können sie erneut gelesen werden. Bei Problemen hilft das Aktivitätsprotokoll.
+Rufen Sie für ein Firmware-Update die Versionen ab, wählen Sie ein zum Gerät passendes Paket und beachten Sie Fortschritt und Ergebnis. Trennen Sie währenddessen weder Strom noch Datenkabel. Die Aktualisierung der UCE-Tool-Anwendung selbst ist ein separater Vorgang im Menü „Über“.
 
-<a id="software-update"></a>
-## UCE Tool aktualisieren
+### Fehlerbehebung
 
-Hiermit wird die **Desktop-Anwendung**, nicht die Gerätefirmware aktualisiert. Unter Windows **Über → Nach Updates suchen** im Fenstermenü wählen; unter macOS im Systemmenü **UCE → Nach Updates suchen**.
-
-Bei einem passenden Update den Anweisungen folgen. Andernfalls das passende Paket auf der Release-Seite herunterladen und die alte Anwendung nach dem Beenden ersetzen. Vorher laufende Gerätefirmware-Vorgänge abschließen. Alte Mac-Versionen ohne DMG-Update-Unterstützung benötigen einmalig eine manuelle Installation der neuen Version.
-
-<a id="faq"></a>
-## Fehlerbehebung
-
-- **Nicht verbunden:** Datenkabel und USB-Port prüfen, andere serielle Programme schließen und passende APP-Firmware sicherstellen. Falls das System das Gerät erkennt, aber UCE Tool nicht, das Protokoll prüfen.
-- **Keine Messwerte:** Verbindung prüfen und Erfassung starten. Im pausierten Zustand oder BOOT-Modus gibt es keine Live-Messwerte.
-- **E-Marker-Wert unbekannt:** Kabel oder Firmware meldet das Feld möglicherweise nicht. VDO-Rohdaten und weitere Ergebnisse prüfen.
-- **GitHub-Anfrage fehlgeschlagen oder begrenzt:** Netzwerk und Proxy prüfen, später oder über ein anderes Netz erneut versuchen und die Fehlermeldung aufbewahren. Bei Zertifikatfehlern einer alten Mac-Version eine neuere Version mit Zertifikatkorrektur installieren.
-- **Gerätefarben ändern sich nicht:** Gerät verbinden und Farben anwenden oder speichern; Firmware-Unterstützung prüfen. Für dauerhafte Änderungen speichern.
-- **Welche Mac-Datei?** `arm64` für Apple Silicon, `x86_64` für Intel; siehe „Über diesen Mac“.
-- **Automatisches Software-Update nicht verfügbar:** Passendes Paket von der Release-Seite laden und die beendete alte Anwendung manuell ersetzen.
-
-Für eine Fehlerbeschreibung bitte Betriebssystem und Prozessor, UCE-Tool-Version, Gerätehardware und APP-Firmware, Schritte, vollständige Fehlermeldung oder Screenshot sowie relevante Protokolle angeben.
+- **Kein Gerät sichtbar:** Stromversorgung, Datenkabel und Anschluss prüfen und erneut verbinden. Eine angezeigte Karte muss angeklickt werden.
+- **Gerät beschäftigt:** andere E-Marker-Abfragen, PD-Erkennungen, Aufzeichnungen oder Updates beenden und deren Abschluss abwarten.
+- **Kein E-Marker-Ergebnis:** Kabel und Anschluss prüfen. Nicht jedes Kabel besitzt einen E-Marker; manche Daten werden nicht gemeldet.
+- **Keine Pakete sichtbar:** Geräteverbindung, gestartete Aufzeichnung und Prüfanschlüsse prüfen. Prüfen, ob GoodCRC ausgeblendet ist.
+- **Update oder Export fehlgeschlagen:** angezeigten Fehler, Speicherplatz, Firmwareauswahl und Verbindung prüfen und erneut versuchen.
