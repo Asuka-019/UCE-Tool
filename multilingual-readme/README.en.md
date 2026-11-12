@@ -6,7 +6,7 @@ UCE Tool is the desktop companion for USB-C Explorer. It provides live measureme
 
 ## Install and connect
 
-Download the appropriate Windows or macOS package from the [releases page](https://github.com/Tamako-zz/UCE-Tool/releases/latest). Extract the Windows package and open the application, or install the Mac app in Applications.
+Download the appropriate Windows or macOS package from the [releases page](https://github.com/Asuka-019/UCE-Tool/releases/latest). Extract the Windows package and open the application, or install the Mac app in Applications.
 
 Connect the device to the computer with a data-capable USB cable. The device appears in the left sidebar; click its card to connect. Click the connected card again to disconnect, or click another device card to switch devices. Scanning does not automatically connect a device.
 
@@ -30,7 +30,9 @@ Connect the charger to be tested and open **PD Detection**. Click **Start Detect
 
 Connect the test circuit according to the device port markings. Open **PD Analyzer** and click **Start Capture**; click the same button to stop. Select a packet to inspect its header and data objects below the list. Drag the divider to resize the areas.
 
-Use the GoodCRC switch to hide or show GoodCRC packets. **Export Excel** saves the capture, including hidden GoodCRC packets.
+Use the CRC button to hide or show GoodCRC packets. **Export Excel** saves the capture, including hidden GoodCRC packets.
+
+Use **Import Excel** to reopen a capture exported by the analyzer. Stop capturing first; importing replaces the current list.
 
 ## Theme Configuration
 

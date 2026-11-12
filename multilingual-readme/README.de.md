@@ -6,7 +6,7 @@ UCE Tool ist die Desktop-Anwendung für USB-C Explorer. Sie bietet Live-Messwert
 
 ## Installation und Verbindung
 
-Laden Sie das passende Windows- oder macOS-Paket von der [Release-Seite](https://github.com/Tamako-zz/UCE-Tool/releases/latest) herunter. Entpacken und starten Sie die Windows-Anwendung bzw. installieren Sie die Mac-App im Ordner „Programme“.
+Laden Sie das passende Windows- oder macOS-Paket von der [Release-Seite](https://github.com/Asuka-019/UCE-Tool/releases/latest) herunter. Entpacken und starten Sie die Windows-Anwendung bzw. installieren Sie die Mac-App im Ordner „Programme“.
 
 Verbinden Sie das Gerät über ein datenfähiges USB-Kabel mit dem Computer. Klicken Sie links auf die Gerätekarte, um die Verbindung herzustellen. Ein erneuter Klick auf die verbundene Karte trennt die Verbindung; ein Klick auf eine andere Karte wechselt das Gerät. Die Gerätesuche stellt keine automatische Verbindung her.
 
@@ -30,7 +30,9 @@ Schließen Sie das zu prüfende Ladegerät an und öffnen Sie **PD-Erkennung**. 
 
 Verbinden Sie die Prüfschaltung gemäß den Anschlussmarkierungen des Geräts. Öffnen Sie den **PD-Analysator** und starten Sie die Aufzeichnung; dieselbe Schaltfläche beendet sie. Wählen Sie ein Paket aus, um darunter Header und Datenobjekte anzusehen. Die Trennlinie zwischen Liste und Details ist verschiebbar.
 
-Mit dem GoodCRC-Schalter lassen sich GoodCRC-Pakete ein- und ausblenden. Der Excel-Export enthält auch ausgeblendete GoodCRC-Pakete.
+Mit der CRC-Schaltfläche lassen sich GoodCRC-Pakete ein- und ausblenden. Der Excel-Export enthält auch ausgeblendete GoodCRC-Pakete.
+
+Mit **Excel importieren** öffnen Sie eine zuvor exportierte Aufzeichnung. Stoppen Sie zuerst die Aufzeichnung; der Import ersetzt die aktuelle Liste.
 
 ## Themenkonfiguration
 

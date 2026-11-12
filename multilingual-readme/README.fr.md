@@ -6,7 +6,7 @@ UCE Tool est l'application de bureau du USB-C Explorer. Elle permet de consulter
 
 ## Installation et connexion
 
-Téléchargez le paquet Windows ou macOS adapté depuis la [page des versions](https://github.com/Tamako-zz/UCE-Tool/releases/latest). Sous Windows, extrayez le paquet puis ouvrez l'application ; sur Mac, installez l'application dans le dossier Applications.
+Téléchargez le paquet Windows ou macOS adapté depuis la [page des versions](https://github.com/Asuka-019/UCE-Tool/releases/latest). Sous Windows, extrayez le paquet puis ouvrez l'application ; sur Mac, installez l'application dans le dossier Applications.
 
 Reliez l'appareil à l'ordinateur avec un câble USB prenant en charge les données. Cliquez sur sa carte dans la barre latérale pour le connecter. Cliquez de nouveau sur la carte connectée pour le déconnecter, ou sur une autre carte pour changer d'appareil. La recherche des appareils est automatique, leur connexion ne l'est pas.
 
@@ -30,7 +30,9 @@ Branchez le chargeur à tester et ouvrez la **détection PD**. Démarrez la dét
 
 Branchez le circuit à tester conformément aux indications des ports. Ouvrez l'**analyseur PD** et démarrez la capture ; le même bouton permet de l'arrêter. Sélectionnez un paquet pour afficher son en-tête et ses objets de données en dessous de la liste. Faites glisser la séparation pour ajuster la taille des zones.
 
-Le commutateur GoodCRC affiche ou masque les paquets GoodCRC. L'export Excel comprend aussi les paquets masqués.
+Le bouton CRC affiche ou masque les paquets GoodCRC. L'export Excel comprend aussi les paquets masqués.
+
+Utilisez **Importer Excel** pour rouvrir une capture exportée par l'analyseur. Arrêtez d'abord la capture ; l'import remplace la liste actuelle.
 
 ## Configuration du thème
 

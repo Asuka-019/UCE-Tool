@@ -6,7 +6,7 @@ UCE Tool 是 USB-C Explorer 的电脑端配套工具，用于查看实时测量�
 
 支持 **Windows 64 位、Mac M 系列和 Mac Intel**，界面提供 **简体中文、English、Deutsch、日本語、Français** 五种语言。
 
-**[下载最新版本](https://github.com/Tamako-zz/UCE-Tool/releases/latest)** · **[查看所有版本](https://github.com/Tamako-zz/UCE-Tool/releases)**
+**[下载最新版本](https://github.com/Asuka-019/UCE-Tool/releases/latest)** · **[查看所有版本](https://github.com/Asuka-019/UCE-Tool/releases)**
 
 ## 目录
 
@@ -28,7 +28,7 @@ UCE Tool 是 USB-C Explorer 的电脑端配套工具，用于查看实时测量�
 
 ### 选择下载文件
 
-进入 [Releases 发布页](https://github.com/Tamako-zz/UCE-Tool/releases/latest)，展开 **Assets**，根据电脑类型选择：
+进入 [Releases 发布页](https://github.com/Asuka-019/UCE-Tool/releases/latest)，展开 **Assets**，根据电脑类型选择：
 
 | 文件 | 适用电脑 | 解压后的程序 |
 | --- | --- | --- |
@@ -184,7 +184,9 @@ Attach 和 Detach 是连接状态事件，Hard Reset 是待测 PD 链路上的�
 
 ### GoodCRC 与导出
 
-使用 GoodCRC 开关可以隐藏或显示 GoodCRC 报文。该开关只影响列表显示；点击 **“导出 Excel”** 时，隐藏的 GoodCRC 也会写入 `.xlsx` 文件。点击 **“清空记录”** 会清除当前抓包列表。
+使用 CRC 按钮可以隐藏或显示 GoodCRC 报文。该按钮只影响列表显示；点击 **“导出 Excel”** 时，隐藏的 GoodCRC 也会写入 `.xlsx` 文件。点击 **“清空记录”** 会清除当前抓包列表。
+
+点击 **“导入 Excel”** 可重新打开分析仪导出的抓包文件。请先停止抓包；导入会替换当前列表。
 
 <a id="firmware"></a>
 
